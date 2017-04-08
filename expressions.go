@@ -150,13 +150,6 @@ var (
 
 	expressionDoubleSyllabicOne = regexp.MustCompile(
 		"(" +
-			"(" +
-				"[^aeiouy]" +
-			// Remove unsupported backreference
-			// Replace with {1,2} instead (one or two repeated consanants)
-			// Will probably need to figure out a better way to do this
-			// Original with backreference: `")\\2l|" +`
-			"){1,2}l|" +
 			"[^aeiouy]ie" +
 			"(" +
 				"r|" +
