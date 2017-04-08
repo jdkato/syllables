@@ -240,7 +240,7 @@ var (
 			"ports?|" +
 			"shires?|" +
 			"tion(ed)?" +
-		")",
+		")$",
 	)
 
 	expressionDouble = regexp.MustCompile(
@@ -275,11 +275,11 @@ var (
 			"berry|" +
 			"woman|" +
 			"women" +
-		")",
+		")$",
 	)
 
 	expressionTriple = regexp.MustCompile(
-		"(ology|ologist|onomy|onomist)",
+		"(ology|ologist|onomy|onomist)$",
 	)
 
 	expressionNonalphabetic = regexp.MustCompile(
