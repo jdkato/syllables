@@ -1,9 +1,11 @@
-// Package syllables provides a Go implementation of 
+// Package syllables provides a Go implementation of
 // the syllable counter from `github.com/wooorm/syllable`
 package syllables
 
 import (
 	"strings"
+
+	"github.com/jinzhu/inflection"
 )
 
 type counter struct {
@@ -37,6 +39,8 @@ func In(text string) int {
 	// If value is part of cornercases,
 	// return hardcoded value
 	if syllables, ok := cornercases[text]; ok {
+		return syllables
+	} else if syllables, ok := cornercases[inflection.Singular(text)]; ok {
 		return syllables
 	}
 
