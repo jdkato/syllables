@@ -31,6 +31,26 @@ func Test_CountIn(t *testing.T) {
 	fmt.Printf("Total failures: %d\n", failures)
 }
 
+func Bench_CountIn(b *testing.B) {
+	data, err := ioutil.ReadFile(filepath.Join("testdata", "syllables.json"))
+	if err != nil {
+		panic(err)
+	}
+
+	tests := make(map[string]int)
+	json.Unmarshal(data, &tests)
+	if err != nil {
+		panic(err)
+	}
+
+	for n := 0; n < b.N; n++ {
+		for word := range tests {
+			In(word)
+		}
+	}
+}
+
+/*
 func Test_CountInBytes(t *testing.T) {
 	cases := []struct {
 		want int
@@ -68,4 +88,4 @@ func Test_CountInBytes(t *testing.T) {
 			t.Errorf("syllables.In(%q) == %v, expected %v", c.in, got, c.want)
 		}
 	}
-}
+}*/
